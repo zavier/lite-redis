@@ -1,5 +1,8 @@
 package com.lite;
 
+import org.junit.Assert;
+import redis.clients.jedis.Jedis;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -15,19 +18,23 @@ import java.net.Socket;
  */
 public class RedisClient {
     public static void main(String[] args) throws Exception {
-        Socket socket = new Socket("127.0.0.1", 6379);
-        try (PrintWriter out = new PrintWriter(socket.getOutputStream());
-             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));) {
-            // INFO ALL
-//            out.write("*1\r\n$7\r\nINFO\r\n$3\r\nALL\r\n");
-//            out.write("*6\r\n$4\r\nscan\r\n$1\r\n0\r\n$5\r\nMATCH\r\n$1\r\n*\r\n$5\r\nCOUNT\r\n$5\r\n10000\r\n");
-//            out.write("*2\r\n$6\r\nselect\r\n$1\r\n0\r\n");
-            out.write("*2\r\n$3\r\nDEL\r\n$7\r\nclj-key\r\n");
-            out.flush();
-            String s = null;
-            while ((s = in.readLine()) != null) {
-                System.out.println(s + "==");
-            }
-        }
+        Jedis jedis = new Jedis("127.0.0.1", 6666);
+        // 添加、查找
+        jedis.set("key1", "value1");
+        String res1 = jedis.get("key1");
+        System.out.println("res1: " + res1);
+        Assert.assertEquals("value1", res1);
+
+        // 修改
+        jedis.set("key1", "value2");
+        String res2 = jedis.get("key1");
+        System.out.println("res2: " + res2);
+        Assert.assertEquals("value2", res2);
+
+        // 删除
+        jedis.del("key1");
+        String res3 = jedis.get("key1");
+        System.out.println("res3: " + res3);
+        Assert.assertNull(res3);
     }
 }
