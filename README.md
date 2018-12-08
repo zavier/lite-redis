@@ -9,5 +9,6 @@ Redis 服务器与客户端交互协议
 
 代码写的很差劲，只是为了展示一下这个协议...
 
+使用方式：
 1. 启动 RedisServer
 2. 在 RedisClient中使用 Jedis 编码 redis 操作代码（目前只支持string类型的 set、get、del方法）
