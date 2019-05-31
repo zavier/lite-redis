@@ -3,7 +3,7 @@
 
 Redis 服务器与客户端交互协议
 
-相关文档：[https://redis.io/topics/protocol](https://redis.io/topics/protocol)
+相关文档：[https://github.com/antirez/redis-doc/blob/master/topics/protocol.md](https://github.com/antirez/redis-doc/blob/master/topics/protocol.md)
 
 这是一个基本的 Redis RESP Demo，目前只实现了 string 类型的 SET GET 方法
 
