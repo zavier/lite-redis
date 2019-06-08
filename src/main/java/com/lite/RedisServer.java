@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- *  文档 <a href="https://redis.io/topics/protocol">https://redis.io/topics/protocol</a><br>
+ *  文档 https://github.com/antirez/redis-doc/blob/master/topics/protocol.md <br>
  *  + 简单字符串 <br>
  *  - 错误字符串 <br>
  *  : 整数字符串 <br>

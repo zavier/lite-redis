@@ -1,6 +1,7 @@
 package com.lite;
 
 import org.junit.Assert;
+import org.junit.Test;
 import redis.clients.jedis.Jedis;
 
 import java.io.BufferedReader;
@@ -9,15 +10,17 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 /**
- *  文档 <a href="https://redis.io/topics/protocol">https://redis.io/topics/protocol</a><br>
+ *  文档 https://github.com/antirez/redis-doc/blob/master/topics/protocol.md <br>
  *  + 简单字符串 <br>
  *  - 错误字符串 <br>
  *  : 整数字符串 <br>
  *  * 数组      值为数组长度 <br>
  *  $ 块字符串   值为字符串长度   如果数值大于0，则需要再读一行
  */
-public class RedisClient {
-    public static void main(String[] args) throws Exception {
+public class RedisTest {
+
+    @Test
+    public void test() {
         Jedis jedis = new Jedis("127.0.0.1", 6666);
         // 添加、查找
         jedis.set("key1", "value1");
